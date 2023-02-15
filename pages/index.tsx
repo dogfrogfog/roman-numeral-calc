@@ -1,3 +1,4 @@
+import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react'
 import Head from 'next/head'
 
 import styles from '@/pages/index.module.css'
@@ -6,6 +7,8 @@ const MIN_INT_VALUE = 1
 const MAX_INT_VALUE = 1000;
 
 export default function Home() {
+  const [inputValue, setInputValue] = useState<number | undefined>()
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,19 +16,32 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.mainSection}>
-        <InputSection />
+        <InputSection inputValue={inputValue} setInputValue={setInputValue} />
         <OutputSection />
       </main>
     </div>
   )
 }
 
-const InputSection = () => {
+type InputSectionProps = {
+  inputValue?: number;
+  setInputValue: Dispatch<SetStateAction<number | undefined>>;
+}
+
+const InputSection = ({ inputValue, setInputValue }: InputSectionProps) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const integerInputValue = parseInt(e.target.value, 10)
+
+    setInputValue(integerInputValue)
+  }
+
   return (
     <div className={styles.inputSection}>
       <h3 className={styles.title}>Numeric input</h3>
       <input
         type="number"
+        value={inputValue || ''}
+        onChange={handleInputChange}
         min={MIN_INT_VALUE}
         max={MAX_INT_VALUE}
         className={styles.input}
