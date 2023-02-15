@@ -1,6 +1,7 @@
 import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react'
 import Head from 'next/head'
 
+import convertToRoman from '@/utils/convertToRoman'
 import styles from '@/pages/index.module.css'
 
 const MIN_INT_VALUE = 1
@@ -17,7 +18,7 @@ export default function Home() {
       </Head>
       <main className={styles.mainSection}>
         <InputSection inputValue={inputValue} setInputValue={setInputValue} />
-        <OutputSection />
+        <OutputSection romanNumber={inputValue ? convertToRoman(inputValue) : ''} />
       </main>
     </div>
   )
@@ -30,9 +31,15 @@ type InputSectionProps = {
 
 const InputSection = ({ inputValue, setInputValue }: InputSectionProps) => {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value === '') {
+      setInputValue(undefined)
+    }
+
     const integerInputValue = parseInt(e.target.value, 10)
 
-    setInputValue(integerInputValue)
+    if (integerInputValue <= MAX_INT_VALUE && integerInputValue >= MIN_INT_VALUE) {
+      setInputValue(integerInputValue)
+    }
   }
 
   return (
@@ -50,11 +57,15 @@ const InputSection = ({ inputValue, setInputValue }: InputSectionProps) => {
   )
 }
 
-const OutputSection = () => {
+type OutputSectionType = {
+  romanNumber: string;
+}
+
+const OutputSection = ({ romanNumber }: OutputSectionType) => {
   return (
     <div className={styles.outputSection}>
       <h3 className={styles.title}>Roman output</h3>
-      <p className={styles.outputValue}>XXXX||||</p>
+      <p className={styles.outputValue}>{romanNumber}</p>
     </div>
   )
 }
