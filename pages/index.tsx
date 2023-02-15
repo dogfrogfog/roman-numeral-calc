@@ -43,7 +43,7 @@ const InputSection = ({ inputValue, setInputValue }: InputSectionProps) => {
   }
 
   return (
-    <div className={styles.inputSection}>
+    <div className={styles.section}>
       <h3 className={styles.title}>Numeric input</h3>
       <input
         type="number"
@@ -63,7 +63,7 @@ type OutputSectionType = {
 
 const OutputSection = ({ romanNumber }: OutputSectionType) => {
   return (
-    <div className={styles.outputSection}>
+    <div className={styles.section}>
       <h3 className={styles.title}>Roman output</h3>
       <p className={styles.outputValue}>{romanNumber}</p>
     </div>
