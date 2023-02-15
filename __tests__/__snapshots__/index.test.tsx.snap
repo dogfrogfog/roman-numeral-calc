@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Home page renders component correctly 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <main
+      class="mainSection"
+    >
+      <div
+        class="section"
+      >
+        <h3
+          class="title"
+        >
+          Numeric input
+        </h3>
+        <input
+          class="input"
+          max="1000"
+          min="1"
+          type="number"
+          value=""
+        />
+      </div>
+      <div
+        class="section"
+      >
+        <h3
+          class="title"
+        >
+          Roman output
+        </h3>
+        <p
+          class="outputValue"
+        />
+      </div>
+    </main>
+  </div>
+</div>
+`;

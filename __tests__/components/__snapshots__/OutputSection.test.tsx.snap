@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: OutputSection renders component correctly 1`] = `
+<div>
+  <div
+    class="section"
+  >
+    <h3
+      class="title"
+    >
+      Roman output
+    </h3>
+    <p
+      class="outputValue"
+    >
+      XX
+    </p>
+  </div>
+</div>
+`;
